@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2977933B1ED6FB020021D683 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297793391ED6FB020021D683 /* CalendarCell.swift */; };
+		2977933C1ED6FB020021D683 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2977933A1ED6FB020021D683 /* CalendarCell.xib */; };
 		297EADC31ED6F7B5001263DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EADC21ED6F7B5001263DA /* AppDelegate.swift */; };
 		297EADC51ED6F7B5001263DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EADC41ED6F7B5001263DA /* ViewController.swift */; };
 		297EADC81ED6F7B5001263DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297EADC61ED6F7B5001263DA /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		297793391ED6FB020021D683 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		2977933A1ED6FB020021D683 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		297EADBF1ED6F7B5001263DA /* CollectionViewTrial2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewTrial2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297EADC21ED6F7B5001263DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		297EADC41ED6F7B5001263DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,10 +103,12 @@
 			children = (
 				297EADC21ED6F7B5001263DA /* AppDelegate.swift */,
 				297EADC41ED6F7B5001263DA /* ViewController.swift */,
+				297793391ED6FB020021D683 /* CalendarCell.swift */,
 				297EADC61ED6F7B5001263DA /* Main.storyboard */,
 				297EADC91ED6F7B5001263DA /* Assets.xcassets */,
 				297EADCB1ED6F7B6001263DA /* LaunchScreen.storyboard */,
 				297EADCE1ED6F7B6001263DA /* Info.plist */,
+				2977933A1ED6FB020021D683 /* CalendarCell.xib */,
 			);
 			path = CollectionViewTrial2;
 			sourceTree = "<group>";
@@ -235,6 +241,7 @@
 				297EADCD1ED6F7B6001263DA /* LaunchScreen.storyboard in Resources */,
 				297EADCA1ED6F7B5001263DA /* Assets.xcassets in Resources */,
 				297EADC81ED6F7B5001263DA /* Main.storyboard in Resources */,
+				2977933C1ED6FB020021D683 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				297EADC51ED6F7B5001263DA /* ViewController.swift in Sources */,
+				2977933B1ED6FB020021D683 /* CalendarCell.swift in Sources */,
 				297EADC31ED6F7B5001263DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +511,7 @@
 				297EADE91ED6F7B6001263DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		297EADEA1ED6F7B6001263DA /* Build configuration list for PBXNativeTarget "CollectionViewTrial2Tests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +520,7 @@
 				297EADEC1ED6F7B6001263DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		297EADED1ED6F7B6001263DA /* Build configuration list for PBXNativeTarget "CollectionViewTrial2UITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +529,7 @@
 				297EADEF1ED6F7B6001263DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

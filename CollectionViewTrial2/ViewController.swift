@@ -8,95 +8,74 @@
 
 import UIKit
 
-class SettingTopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    var collectionView: UICollectionView!
-    
-    let items = [
-    "月曜日",
-    "火曜日",
-    "水曜日",
-    "木曜日",
-    "金曜日",
-    "土曜日",
-    "日曜日",
-    ]
-    
 
+extension UIColor {
+    class func lightBlue() -> UIColor {
+        return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 1.0)
+    }
+    
+    class func lightRed() -> UIColor {
+        return UIColor(red: 195.0 / 255, green: 123.0 / 255, blue: 175.0 / 255, alpha: 1.0)
+    }
+}
+
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    let dateManager = DateManager()
+    let daysPerWeek: Int = 7
+    let cellMargin: CGFloat = 2.0
+    var selectedDate = NSDate()
+    var today: NSDate!
+    let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    
+    @IBOutlet weak var headerPrevBtn: UIButton!//①
+    @IBOutlet weak var headerNextBtn: UIButton!//②
+    @IBOutlet weak var headerTitle: UILabel!    //③
+    @IBOutlet weak var calenderHeaderView: UIView! //④
+    @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.registerClass(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.clearColor()
-        
-        self.view.addSubview(collectionView)
-        
+        calenderCollectionView.delegate = self
+        calenderCollectionView.dataSource = self
+        calenderCollectionView.backgroundColor = UIColor.whiteColor()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //1
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
-    
+    //2
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        // Section毎にCellの総数を変える.
+        if section == 0 {
+            return 7
+        } else {
+            return dateManager.daysAcquisition() //ここは月によって異なる(後ほど説明します)
+        }
     }
-    
+    //3
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: CustomUICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
-                                                                                                     forIndexPath: indexPath) as! CustomUICollectionViewCell
-        cell.textLabel?.text = items[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CalendarCell
+        
         return cell
     }
     
-    // ⭐️これがポイントかも
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width: CGFloat = self.view.frame.width / 3 - 2
-        let height: CGFloat = width
-        return CGSize(width: width, height: height) // The size of one cell
+    
+    //①タップ時
+    @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
+    //②タップ時
+    @IBAction func tappedHeaderNextBtn(sender: UIButton) {
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let frame: CGRect = self.view.frame
-        let margin: CGFloat = 0
-        return UIEdgeInsetsMake(margin, margin, margin, margin) // margin between cells
-    }
     
 }
-
-class CustomUICollectionViewCell : UICollectionViewCell{
-    var textLabel : UILabel?
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        textLabel = UILabel(frame: CGRectMake(0, 0, frame.width, frame.height))
-        textLabel?.text = ""
-        textLabel?.font = UIFont.systemFontOfSize(12)
-        textLabel?.backgroundColor = UIColor.whiteColor()
-        textLabel?.textAlignment = NSTextAlignment.Center
-        self.contentView.addSubview(textLabel!)
-    }
-
-
-}
-
